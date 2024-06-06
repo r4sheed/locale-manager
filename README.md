@@ -1,7 +1,5 @@
 # Home
 
-Welcome to the **LocaleManager** wiki!
-
 **LocaleManager** is a Python class to manage localization and translations. It provides functionalities to load, cache, and manage language files, handle missing translations, and switch between different languages.
 
 ## Table of Contents
