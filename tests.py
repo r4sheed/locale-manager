@@ -43,7 +43,6 @@ def run_tests():
         manager = locale_manager.LocaleManager(
             language_folder="test_locales",
             default_language="en_US",
-            fallback_language="en_US",
             languages=["en_US", "hu_HU"],
             translations={
                 "en_US": {

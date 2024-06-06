@@ -13,13 +13,12 @@ class TranslationKeyNotFoundError(Exception):
 class LocaleManager:
     """Class to manage localization and translations."""
 
-    def __init__(self, language_folder="locales", default_language="en_US", fallback_language=None, languages=None, translations=None):
+    def __init__(self, language_folder="locales", default_language="en_US", languages=None, translations=None):
         """
         Initializes the LocaleManager class with the specified language folder, default language, fallback language, predefined languages, and predefined translations.
 
         :param language_folder: Directory where language files are stored.
         :param default_language: Default language to use. Defaults to "en_US".
-        :param fallback_language: Fallback language to use if translation key is not found. Defaults to the default language.
         :param languages: List of predefined language codes.
         :param translations: Dictionary of predefined translations.
         """
@@ -28,7 +27,6 @@ class LocaleManager:
 
         self.language_folder = language_folder
         self.default_language = default_language
-        self.fallback_language = fallback_language or default_language
         self.languages = languages
         self.predefined_translations = translations or {}
         self.translations_cache = {}
@@ -111,9 +109,9 @@ class LocaleManager:
         
         if key not in translations:
             # Fallback to default language
-            translations = self.load_language(self.fallback_language)
+            translations = self.load_language(self.default_language)
             if key not in translations:
-                raise TranslationKeyNotFoundError(f"Translation key '{key}' not found in both {language_code} and fallback language {self.fallback_language}!")
+                raise TranslationKeyNotFoundError(f"Translation key '{key}' not found in both {language_code} and fallback language {self.default_language}!")
 
         translation = translations[key]
 
